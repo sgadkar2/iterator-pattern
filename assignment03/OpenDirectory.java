@@ -24,14 +24,16 @@ public class OpenDirectory {
 				File f = iter.next();
 				pw.println(f);
 
+				if(f.getName().toUpperCase().contains(text.toUpperCase())){
+					System.out.println(f + " contains text " + text + " in its file name");
+				}
+				
 				String type = " ";
 				if(f.getName().lastIndexOf(".") > -1){
 					type = f.getName().substring(f.getName().lastIndexOf(".")).toUpperCase();
 				}
 				if(fileTypes.contains(type)) {
-					if(f.getName().toUpperCase().contains(text.toUpperCase())){
-						System.out.println(f + " contains text " + text + " in its file name");
-					}
+					
 					if(isTextPresent(f, pw, text))
 						System.out.println(f + " contains text " + text + " inside the file");
 				}
